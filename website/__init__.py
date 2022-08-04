@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
-from flaskext.markdown import Markdown
+from flask.ext.markdown import Markdown
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
