@@ -1,0 +1,32 @@
+{% extends 'base2.html' %}
+{% block title %} test1 {% endblock %}
+{% block content %} 
+    <div class="columns is-mobile">
+        <div class="column is-10 is-offset-1">
+            <br> <i>
+            Welcome, <b> {{user.username}}. </b>Here's your terminal.</i> <hr>
+
+            <form method="POST" style="display: inline;"> 
+              <nav class="level">          
+
+                <div class="level-item has-text-centered">
+                <input class="input is-primary" type="text" name ="command" placeholder=" > "> <button class="button is-link is-light">submit</button>
+                </div>  
+              </nav> </form> 
+
+        </div>
+      </div>
+      
+      <div class="columns is-mobile">
+        <div class="column is-10 is-offset-1">
+          <div class="content">
+            {% for line in page %}
+                {{line |safe}} 
+            {% endfor  %}
+            
+
+
+        </div>
+      </div>
+    </div>
+{% endblock %}

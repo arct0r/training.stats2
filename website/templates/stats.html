@@ -1,0 +1,243 @@
+{% extends 'base2.html' %}
+{% block title %} Stats {% endblock %}
+{% block content %}
+
+<div class="columns is-mobile">
+  <div class="column is-10 is-offset-1"> <br>
+    <i>
+      Welcome, <b> {{user.username}}. </b>Here's your stats.</i> <hr>
+    <br> 
+    <nav class="level">
+      <div class="tile">
+        {% if weeklyCardio < 60 %} <article class="tile is-child notification is-warning">
+          {% elif weeklyCardio >= 120 %}
+          <article class="tile is-child notification is-info">
+
+            {% endif %}
+
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">weekly cardio</p>
+                <p class="title">{{weeklyCardio}} min</p>
+              </div>
+            </div>
+          </article>
+      </div>
+      <div class="tile">
+        <article class="tile is-child notification ">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">total month improv</p>
+              <p class="title"> - </p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="tile">
+        <article class="tile is-child notification ">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Focus this week</p>
+              <p class="title">{{weeklyFocus[0]}}h</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="tile">
+        <article class="tile is-child notification ">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">focus yesterday</p>
+              <p class="title">{{yesterdayFocus[0]}}h</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="tile">
+        {% if dailyFocus[0] >= 3 %}
+        <article class="tile is-child notification is-info">
+          {% elif dailyFocus[0] >= 5 %}
+          <article class="tile is-child notification is-primary">
+            {% elif dailyFocus[0] < 3 %} <article class="tile is-child notification is-warning">
+              {% endif %}
+
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">focus today</p>
+                  <p class="title">{{dailyFocus[0]}}h {{dailyFocus[1]}}min</p>
+                </div>
+              </div>
+          </article>
+      </div>
+
+
+  </div>
+  </nav> <br>
+</div>
+</div>
+
+
+
+
+
+
+<div class="columns is-mobile">
+  <div class="column is-10 is-offset-1">
+    <section class="info-tiles">
+      <div class="tile is-ancestor has-text-centered">
+
+        <div class="tile is-parent is-2">
+          <div class="tile is-child box">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">back</p>
+                <i> <b> {{muscleGroups['back']}}</b> sets</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent is-2">
+          <div class="tile is-child box">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">chest</p>
+                <i> <b> {{muscleGroups['chest']}}</b> sets</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent is-2">
+          <div class="tile is-child box">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">legs</p>
+                <i> <b> {{muscleGroups['legs']}}</b> sets</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent is-2">
+          <div class="tile is-child box">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">shoulders</p>
+                <i> <b> {{muscleGroups['shoulders']}}</b> sets</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent is-2">
+          <div class="tile is-child box">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">triceps</p>
+                <i> <b> {{muscleGroups['triceps']}}</b> sets</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent is-2">
+          <div class="tile is-child box">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">biceps</p>
+                <i> <b> {{muscleGroups['back']}}</b> sets</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><br><i> <text class="has-text-grey-light">*remember to aim for 15-18 weekly worksets per muscle group</text></i>
+  </div>
+</div>
+
+
+</div>
+</div>
+
+<div class="columns is-mobile">
+  <div class="column is-10 is-offset-1">
+    <div class="level-item has-text-centered">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+
+
+          <tr>
+            <th> Exercise </th>
+            <th> Current Max </th>
+            <th> Goal </th>
+            <th> 30 days </th>
+            <th> 90 days </th>
+            <th> 6 months </th>
+
+          </tr>
+
+        </thead>
+        <tbody>
+          {% for exercise in strengthStats %}
+
+          <tr>
+            <td>{{exercise}}</td>
+            <td> {% if (strengthStats[exercise]['goalMax'][0] and strengthStats[exercise]['goalMax'][1]) or (strengthStats[exercise]['goalMax'][0] == 0 and strengthStats[exercise]['goalMax'][1]) %}
+              {{strengthStats[exercise]['currentMax'][0]}}kg x {{strengthStats[exercise]['currentMax'][1]}}</td>
+            {% endif %}
+            <td> {% if (strengthStats[exercise]['goalMax'][0] and strengthStats[exercise]['goalMax'][1]) or (strengthStats[exercise]['goalMax'][0] == 0 and strengthStats[exercise]['goalMax'][1])%}
+              {{strengthStats[exercise]['goalMax'][0]}}kg x {{strengthStats[exercise]['goalMax'][1]}}</td>
+            {% endif %}
+            <td> {% if strengthStats[exercise]['days_30'] %}
+              {{strengthStats[exercise]['days_30']}}%</td>
+            {% endif %}
+            <td> {% if strengthStats[exercise]['days_90'] %}
+              {{strengthStats[exercise]['days_90']}}%</td>
+            {% endif %}
+            <td> {% if strengthStats[exercise]['days_180'] %}
+              {{strengthStats[exercise]['days_180']}}%</td>
+            {% endif %}
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="columns is-mobile">
+  <div class="column is-10 is-offset-1"> 
+    <hr>
+    <section class="info-tiles">
+      <div class="tile is-ancestor has-text-centered">
+        
+        {% if weekWorkouts %}
+        {% for day in weekWorkouts %}
+
+        <div class="tile is-parent is-2">
+          <div class="tile is-child box">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">{{day}}</p>
+                <b></b> {% for ex in weekWorkouts[day] %}
+
+                           <i> {{ex.name}}: </i> {{ex.weight}}kg x {{ex.reps}}<br>
+                            {% endfor %}
+                            
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        {% endfor %}
+        {% endif %}
+
+
+      </div>
+    </section><br>
+  </div>
+</div>
+
+
+
+{% endblock %}

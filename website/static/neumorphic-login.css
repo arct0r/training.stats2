@@ -1,0 +1,48 @@
+* {
+    font-family: 'SF Mono', sans-serif;
+  }
+  
+  :root {
+    --shadowDark: #D9DDE6;
+    --background: #E4E9F2;
+    --shadowLight: #EFF5FE;
+  }
+  
+  body {
+    background: var(--background);
+    
+  }
+  
+  .hero-body {
+    justify-content: center;
+    font-family: 'SF Mono', sans-serif;
+
+  }
+  
+  .login {
+    border-radius: 25px;
+    padding: 1.5rem;
+    box-shadow: 8px 8px 15px var(--shadowDark), -8px -8px 15px var(--shadowLight);
+    font-family: 'SF Mono', sans-serif;
+
+    
+  }
+
+  .button {
+    font-family: 'SF Mono', sans-serif;
+
+  }
+  
+
+  input {
+    background: var(--shadowDark) !important;
+    font-family: 'SF Mono', sans-serif;
+
+    
+  }
+  
+  a {
+    font-weight: 600;
+    font-family: 'SF Mono', sans-serif;
+
+  }
