@@ -44,7 +44,7 @@ def terminal():
             print('invalid input')
             flash('Invalid input.', category ='error')
 
-    fOpen = open('website\md\eest.md', 'r')
+    fOpen = open('website/md/eest.md', 'r')
     page = []
     for line in fOpen:
         page.append(markdown.markdown(line))
