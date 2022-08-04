@@ -9,7 +9,7 @@ from .stats import ex_muscle_groups
 
 
 def updateLog(initialString):
-    fOpen = open('website\md\log.md', 'r+')
+    fOpen = open('website/md/log.md', 'r+')
     content = fOpen.read()
     fOpen.seek(0)
     fOpen.write(initialString + ' ' + datetime.today().strftime('%Y-%m-%d') + '\n' + content)
