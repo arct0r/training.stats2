@@ -50,6 +50,8 @@ class Exercise(db.Model):
 
         #ora trovo tutti gli esercizi fatti durante la settimana
         exs = Exercise.query.filter(
+            Exercise.user_id == current_user.id
+        ).filter(
             Exercise.date > past_date
             ).all()
         
@@ -104,7 +106,7 @@ class FitnessGoal(db.Model):
     __tablename__ = 'fitnessgoal'
 
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(20), unique=True)
+    name = db.Column(db.String(20))
     reps = db.Column(db.Integer)
     weight = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) #user minuscolo nonostante sia User

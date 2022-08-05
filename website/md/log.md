@@ -1,3 +1,10 @@
+set goal squats 140kg x3 2022-08-05
+add squat 100kg x5 2022-08-05
+add pullups 10kg x5 2022-08-05
+set goal pullups 10kg x10 2022-08-05
+set goal dips 40kg x1 2022-08-05
+add dips 20kg x5 2022-08-05
+add dips 20kg x5 2022-08-05
 set goal squat 130kg x1 2022-08-04
 set goal ohp_kb 24kg x5 2022-08-04
 set goal deadlift 160kg x3 2022-08-04
